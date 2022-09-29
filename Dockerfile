@@ -8,7 +8,7 @@ RUN apt-get -y install autoconf automake build-essential git-core libass-dev lib
 
 RUN git clone git://git.libav.org/libav.git
 
-RUN mkdir ~/ffmpeg_sources; cd ~/ffmpeg_sources; git clone --depth 1 git://github.com/mstorsjo/fdk-aac.git; cd fdk-aac; autoreconf -fiv; ./configure --prefix="$HOME/ffmpeg_build" --disable-shared; make -j8; make install; make distclean
+RUN mkdir ~/ffmpeg_sources; cd ~/ffmpeg_sources; git clone --depth 1 https://github.com/mstorsjo/fdk-aac.git; cd fdk-aac; autoreconf -fiv; ./configure --prefix="$HOME/ffmpeg_build" --disable-shared; make -j8; make install; make distclean
 RUN apt-get -y install wget
 RUN cd ~/ffmpeg_sources; wget https://sourceforge.net/projects/lame/files/lame/3.99/lame-3.99.5.tar.gz; tar xzvf lame-3.99.5.tar.gz; cd lame-3.99.5; ./configure --prefix="$HOME/ffmpeg_build" --enable-nasm --disable-shared; make -j8; make install; make distclean
 
